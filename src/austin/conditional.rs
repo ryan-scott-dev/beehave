@@ -1,32 +1,32 @@
-// use austin::result::Result;
-// use austin::node::Node;
+use austin::result::Result;
+use austin::node::Node;
 
-// pub struct Conditional<F> {
-//     pub name: &'static str,
-//     pub callback: F
-// }
+pub struct Conditional<T, F> {
+    pub name: &'static str,
+    pub callback: F
+}
 
-// impl <F: Fn() -> bool> Conditional<F> {
+impl <T, F: FnMut(&mut T) -> bool> Conditional<T, F> {
 
-//     pub fn new(name: &'static str, callback: F) -> Conditional<F> {
-//         Conditional {
-//             name: name,
-//             callback: callback
-//         }
-//     }
+    pub fn new(name: &'static str, callback: F) -> Conditional<T, F> {
+        Conditional {
+            name: name,
+            callback: callback
+        }
+    }
 
-// }
+}
 
-// impl <F: Fn() -> bool> Node for Conditional<F> {
+impl <T, F: FnMut(&mut T) -> bool> Node<T> for Conditional<T, F> {
 
-//     fn evaluate(&mut self) -> Result {
-//         let args = ();
-//         if self.callback.call(args) {
-//             Result::Success
-//         } else {
-//             Result::Failure
-//         }
+    fn evaluate(&mut self, target: &mut T) -> Result {
+        let args = (target,);
+        if self.callback.call_mut(args) {
+            Result::Success
+        } else {
+            Result::Failure
+        }
 
-//     }
+    }
 
-// }
+}

@@ -25,7 +25,7 @@ fn evalute_returns_method_result() {
 }
 
 #[test]
-fn evalute_mutates_the_target() {
+fn evalute_mutates_target() {
     let mut target = TestTarget::new();
     assert!(target.foo != true);
     assert!(target.bar != 32);
