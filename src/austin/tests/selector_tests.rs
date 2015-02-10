@@ -12,6 +12,14 @@ fn constructor_new() {
 }
 
 #[test]
+fn constructor_with_capacity() {
+    let expected_capacity: usize = 10us;
+    let selector = Selector::<TestTarget>::with_capacity("Test Selector", expected_capacity);
+    assert!(selector.name == "Test Selector");
+    assert!(selector.children.capacity() == expected_capacity);
+}
+
+#[test]
 fn evaluate_failure_when_empty() {
     let mut selector = Selector::<TestTarget>::new("Test Selector");
     let mut target = TestTarget::new();

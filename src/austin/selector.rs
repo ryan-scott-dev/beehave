@@ -16,6 +16,13 @@ impl <'a, T> Selector<'a, T> {
         }
     }
 
+    pub fn with_capacity(name: &'static str, capacity: usize) -> Selector<'a, T> {
+        Selector {
+            name: name,
+            children: Vec::with_capacity(capacity)
+        }
+    }
+
 }
 
 impl <'a, T> Node<T> for Selector<'a, T> {

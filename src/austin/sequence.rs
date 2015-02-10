@@ -16,6 +16,13 @@ impl <'a, T> Sequence<'a, T> {
         }
     }
 
+    pub fn with_capacity(name: &'static str, capacity: usize) -> Sequence<'a, T> {
+        Sequence {
+            name: name,
+            children: Vec::with_capacity(capacity)
+        }
+    }
+
 }
 
 impl <'a, T> Node<T> for Sequence<'a, T> {

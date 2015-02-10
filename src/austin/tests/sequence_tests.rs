@@ -12,6 +12,14 @@ fn constructor_new() {
 }
 
 #[test]
+fn constructor_with_capacity() {
+    let expected_capacity: usize = 10us;
+    let sequence = Sequence::<TestTarget>::with_capacity("Test Sequence", expected_capacity);
+    assert!(sequence.name == "Test Sequence");
+    assert!(sequence.children.capacity() == expected_capacity);
+}
+
+#[test]
 fn evaluate_success_when_empty() {
     let mut sequence = Sequence::<TestTarget>::new("Test Sequence");
     let mut target = TestTarget::new();

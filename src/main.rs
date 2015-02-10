@@ -33,7 +33,7 @@ use example::tree::Tree;
 use test::Bencher;
 
 fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>) {
-    let mut world_behaviour: Selector<'static, World> = Selector::new("World Root");
+    let mut world_behaviour: Selector<'static, World> = Selector::with_capacity("World Root", 2);
     world_behaviour.add(Box::new(Action::new("Day/Night Cycle", |world: &mut World| {
             if world.can_shine() {
                 world.toggle_sun();
@@ -54,9 +54,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
         }
     )));
 
-    let mut tree_behaviour: Selector<'static, Tree> = Selector::new("Tree Root");
-
-    let mut photosynthesise: Sequence<Tree> = Sequence::new("Photosynthesise");
+    let mut photosynthesise: Sequence<Tree> = Sequence::with_capacity("Photosynthesise", 3);
     photosynthesise.add(Box::new(Action::new("Make Energy", |tree: &mut Tree| {
             if tree.can_make_energy() {
                 tree.make_energy();
@@ -85,6 +83,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
         }
     )));
 
+    let mut tree_behaviour: Selector<'static, Tree> = Selector::with_capacity("Tree Root", 3);
     tree_behaviour.add(Box::new(photosynthesise));
     tree_behaviour.add(Box::new(Action::new("Gather Sun", |tree: &mut Tree| {
             if tree.can_gather_sun() {
