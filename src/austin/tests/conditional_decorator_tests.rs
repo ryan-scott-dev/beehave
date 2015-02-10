@@ -1,86 +1,69 @@
-// use austin::result::Result;
-// use austin::node::Node;
-// use austin::conditional_decorator::ConditionalDecorator;
-// use austin::tests::helpers;
+use austin::result::Result;
+use austin::node::Node;
+use austin::conditional_decorator::ConditionalDecorator;
+use austin::tests::helpers;
+use austin::tests::helpers::TestTarget;
 
-// #[test]
-// fn constructor_new() {
-//     let conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { true });
-//     assert!(conditional_decorator.name == "Test Conditional Decorator");
-// }
+#[test]
+fn constructor_new() {
+    let conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { true });
+    assert!(conditional_decorator.name == "Test Conditional Decorator");
+}
 
-// #[test]
-// fn evalute_empty_failure_with_false() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { false });
+#[test]
+fn evalute_empty_failure_with_false() {
+    let mut target = TestTarget::new();
+    let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { false });
 
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Failure);
-// }
+    let result = conditional_decorator.evaluate(&mut target);
+    assert!(result == Result::Failure);
+}
 
-// #[test]
-// fn evalute_empty_success_with_true() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { true });
+#[test]
+fn evalute_empty_success_with_true() {
+    let mut target = TestTarget::new();
+    let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { true });
 
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Success);
-// }
+    let result = conditional_decorator.evaluate(&mut target);
+    assert!(result == Result::Success);
+}
 
-// #[test]
-// fn evalute_success_child_with_true_success() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { true });
-//     conditional_decorator.success(Box::new(helpers::success()));
-//     conditional_decorator.failure(Box::new(helpers::raise_error()));
+#[test]
+fn evalute_child_with_true_success() {
+    let mut target = TestTarget::new();
+    let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { true });
+    conditional_decorator.child(Box::new(helpers::success()));
 
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Success);
-// }
+    let result = conditional_decorator.evaluate(&mut target);
+    assert!(result == Result::Success);
+}
 
-// #[test]
-// fn evalute_success_child_with_true_failure() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { true });
-//     conditional_decorator.success(Box::new(helpers::failure()));
-//     conditional_decorator.failure(Box::new(helpers::raise_error()));
+#[test]
+fn evalute_child_with_true_failure() {
+    let mut target = TestTarget::new();
+    let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { true });
+    conditional_decorator.child(Box::new(helpers::failure()));
 
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Failure);
-// }
+    let result = conditional_decorator.evaluate(&mut target);
+    assert!(result == Result::Failure);
+}
 
-// #[test]
-// fn evalute_success_child_with_true_pending() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { true });
-//     conditional_decorator.success(Box::new(helpers::pending()));
-//     conditional_decorator.failure(Box::new(helpers::raise_error()));
+#[test]
+fn evalute_child_with_true_pending() {
+    let mut target = TestTarget::new();
+    let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { true });
+    conditional_decorator.child(Box::new(helpers::pending()));
 
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Pending);
-// }
+    let result = conditional_decorator.evaluate(&mut target);
+    assert!(result == Result::Pending);
+}
 
-// #[test]
-// fn evalute_failure_child_with_true_success() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { false });
-//     conditional_decorator.failure(Box::new(helpers::success()));
-//     conditional_decorator.success(Box::new(helpers::raise_error()));
+#[test]
+fn evalute_conditional_failure() {
+    let mut target = TestTarget::new();
+    let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", |_: &mut TestTarget| { false });
+    conditional_decorator.child(Box::new(helpers::raise_error()));
 
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Success);
-// }
-
-// #[test]
-// fn evalute_failure_child_with_true_failure() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { false });
-//     conditional_decorator.failure(Box::new(helpers::failure()));
-//     conditional_decorator.success(Box::new(helpers::raise_error()));
-
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Failure);
-// }
-
-// #[test]
-// fn evalute_failure_child_with_true_pending() {
-//     let mut conditional_decorator = ConditionalDecorator::new("Test Conditional Decorator", || { false });
-//     conditional_decorator.failure(Box::new(helpers::pending()));
-//     conditional_decorator.success(Box::new(helpers::raise_error()));
-
-//     let result = conditional_decorator.evaluate();
-//     assert!(result == Result::Pending);
-// }
+    let result = conditional_decorator.evaluate(&mut target);
+    assert!(result == Result::Failure);
+}
