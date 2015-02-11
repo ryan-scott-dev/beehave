@@ -3,3 +3,19 @@
 name = "austin"
 version = "0.0.1"
 authors = ["Ryan Scott <atthealma@gmail.com>"]
+
+[[bin]]
+
+name = "example"
+path = "src/example/main.rs"
+bench = true
+test = false
+doctest = false
+doc = false
+
+[lib]
+
+name = "austin"
+path = "src/lib.rs"
+doctest = false
+doc = false

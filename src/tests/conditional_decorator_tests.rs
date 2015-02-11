@@ -1,8 +1,8 @@
-use austin::result::Result;
-use austin::node::Node;
-use austin::conditional_decorator::ConditionalDecorator;
-use austin::tests::helpers;
-use austin::tests::helpers::TestTarget;
+use result::Result;
+use node::Node;
+use conditional_decorator::ConditionalDecorator;
+use tests::helpers;
+use tests::helpers::TestTarget;
 
 #[test]
 fn evalute_child_with_true_success() {

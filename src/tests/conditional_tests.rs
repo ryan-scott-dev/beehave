@@ -1,7 +1,7 @@
-use austin::result::Result;
-use austin::node::Node;
-use austin::conditional::Conditional;
-use austin::tests::helpers::TestTarget;
+use result::Result;
+use node::Node;
+use conditional::Conditional;
+use tests::helpers::TestTarget;
 
 #[test]
 fn constructor_new() {

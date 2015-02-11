@@ -1,9 +1,9 @@
-use austin::result::Result;
-use austin::node::Node;
-use austin::sequence::{ Sequence };
-use austin::node_collection::NodeCollection;
-use austin::tests::helpers;
-use austin::tests::helpers::TestTarget;
+use result::Result;
+use node::Node;
+use sequence::{ Sequence };
+use node_collection::NodeCollection;
+use tests::helpers;
+use tests::helpers::TestTarget;
 
 #[test]
 fn constructor_new() {

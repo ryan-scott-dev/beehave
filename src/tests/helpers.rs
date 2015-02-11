@@ -1,5 +1,5 @@
-use austin::result::Result;
-use austin::node::Node;
+use result::Result;
+use node::Node;
 
 #[derive(Clone, PartialEq, Eq)]
 pub struct TestTarget {

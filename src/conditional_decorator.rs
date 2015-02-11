@@ -1,5 +1,5 @@
-use austin::result::Result;
-use austin::node::Node;
+use result::Result;
+use node::Node;
 
 pub struct ConditionalDecorator<'a, T, F> {
     pub name: &'static str,

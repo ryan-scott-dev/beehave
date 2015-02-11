@@ -1,13 +1,11 @@
-#![feature(unboxed_closures)]
-#![feature(core)]
-
-// Demo depends on:
 #![feature(io)]
 #![feature(std_misc)]
 #![feature(rand)]
 
-extern crate test;
 extern crate rand;
+
+#[macro_use]
+extern crate austin;
 
 // Example based on the example provided by http://machinejs.maryrosecook.com
 
@@ -16,9 +14,6 @@ use std::rc::Rc;
 use std::old_io::Timer;
 use std::time::Duration;
 
-#[macro_use]
-mod austin;
-
 use austin::sequence::Sequence;
 use austin::selector::Selector;
 use austin::conditional_decorator::ConditionalDecorator;
@@ -26,13 +21,11 @@ use austin::action::Action;
 use austin::node::Node;
 use austin::result::Result;
 
-#[allow(dead_code)]
-mod example;
+mod world;
+mod tree;
 
-use example::world::World;
-use example::tree::Tree;
-
-use test::Bencher;
+use world::World;
+use tree::Tree;
 
 fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>) {
     let world_behaviour: Selector<World> = behaviour_selector!("World Root", [
@@ -111,7 +104,6 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
     (world_behaviour, tree_behaviour)
 }
 
-#[allow(dead_code)]
 fn main() {
     let world = Rc::new(RefCell::new(World::new()));
     let mut tree = Tree::new(world.clone());
@@ -139,6 +131,12 @@ fn main() {
         timer.sleep(Duration::milliseconds(100));
     }
 }
+
+#[cfg(test)]
+extern crate test;
+
+#[cfg(test)]
+use test::Bencher;
 
 #[bench]
 fn bench_evaluate_trees_and_world(b: &mut test::Bencher) {

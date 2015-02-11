@@ -1,8 +1,8 @@
-use austin::result::Result;
-use austin::node::Node;
-use austin::action::Action;
-use austin::tests::helpers;
-use austin::tests::helpers::TestTarget;
+use result::Result;
+use node::Node;
+use action::Action;
+use tests::helpers;
+use tests::helpers::TestTarget;
 
 #[test]
 fn constructor_new() {
