@@ -49,38 +49,36 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
         )
     ]);
 
-    let photosynthesise: Sequence<Tree> = behaviour_sequence!("Photosynthesise", [
-        condition!("Ensure Can Make Energy",
-            |tree: &mut Tree| {
-                tree.can_make_energy()
-            },
-            action!("Make Energy", |tree: &mut Tree| {
-                tree.make_energy();
-                Result::Success
-            })
-        ),
-        condition!("Ensure Can Grow",
-            |tree: &mut Tree| {
-                tree.can_grow()
-            },
-            action!("Grow", |tree: &mut Tree| {
-                tree.grow();
-                Result::Success
-            })
-        ),
-        condition!("Ensure Can Emit Oxygen",
-            |tree: &mut Tree| {
-                tree.can_emit_oxygen()
-            },
-            action!("Emit Oxygen", |tree: &mut Tree| {
-                tree.emit_oxygen();
-                Result::Success
-            })
-        )
-    ]);
-
     let tree_behaviour: Selector<Tree> = behaviour_selector!("Tree Root", [
-        photosynthesise,
+        behaviour_sequence!("Photosynthesise", [
+            condition!("Ensure Can Make Energy",
+                |tree: &mut Tree| {
+                    tree.can_make_energy()
+                },
+                action!("Make Energy", |tree: &mut Tree| {
+                    tree.make_energy();
+                    Result::Success
+                })
+            ),
+            condition!("Ensure Can Grow",
+                |tree: &mut Tree| {
+                    tree.can_grow()
+                },
+                action!("Grow", |tree: &mut Tree| {
+                    tree.grow();
+                    Result::Success
+                })
+            ),
+            condition!("Ensure Can Emit Oxygen",
+                |tree: &mut Tree| {
+                    tree.can_emit_oxygen()
+                },
+                action!("Emit Oxygen", |tree: &mut Tree| {
+                    tree.emit_oxygen();
+                    Result::Success
+                })
+            )
+        ]),
         condition!("Ensure Can Gather Sun",
             |tree: &mut Tree| {
                 tree.can_gather_sun()
