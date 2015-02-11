@@ -1,8 +1,8 @@
-use result::Result;
-use node::Node;
-use conditional_decorator::ConditionalDecorator;
-use tests::helpers;
-use tests::helpers::TestTarget;
+use beehave::result::Result;
+use beehave::node::Node;
+use beehave::conditional_decorator::ConditionalDecorator;
+use helpers;
+use helpers::TestTarget;
 
 #[test]
 fn evalute_child_with_true_success() {

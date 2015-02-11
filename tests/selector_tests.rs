@@ -1,9 +1,9 @@
-use result::Result;
-use node::Node;
-use selector::{ Selector };
-use node_collection::NodeCollection;
-use tests::helpers;
-use tests::helpers::TestTarget;
+use beehave::result::Result;
+use beehave::node::Node;
+use beehave::selector::{ Selector };
+use beehave::node_collection::NodeCollection;
+use helpers;
+use helpers::TestTarget;
 
 #[test]
 fn constructor_new() {

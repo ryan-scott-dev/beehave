@@ -1,5 +1,5 @@
-use result::Result;
-use node::Node;
+use beehave::result::Result;
+use beehave::node::Node;
 
 #[derive(Clone, PartialEq, Eq)]
 pub struct TestTarget {

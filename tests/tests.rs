@@ -1,3 +1,7 @@
+#![feature(core)]
+
+extern crate beehave;
+
 mod helpers;
 
 mod sequence_tests;

@@ -1,8 +1,5 @@
 #![feature(core, unboxed_closures)]
 
-#[cfg(test)]
-mod tests;
-
 pub mod result;
 pub mod node;
 pub mod node_collection;

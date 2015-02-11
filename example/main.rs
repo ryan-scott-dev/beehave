@@ -5,7 +5,7 @@
 extern crate rand;
 
 #[macro_use]
-extern crate austin;
+extern crate beehave;
 
 // Example based on the example provided by http://machinejs.maryrosecook.com
 
@@ -14,12 +14,12 @@ use std::rc::Rc;
 use std::old_io::Timer;
 use std::time::Duration;
 
-use austin::sequence::Sequence;
-use austin::selector::Selector;
-use austin::conditional_decorator::ConditionalDecorator;
-use austin::action::Action;
-use austin::node::Node;
-use austin::result::Result;
+use beehave::sequence::Sequence;
+use beehave::selector::Selector;
+use beehave::conditional_decorator::ConditionalDecorator;
+use beehave::action::Action;
+use beehave::node::Node;
+use beehave::result::Result;
 
 mod world;
 mod tree;

@@ -1,8 +1,8 @@
-use result::Result;
-use node::Node;
-use action::Action;
-use tests::helpers;
-use tests::helpers::TestTarget;
+use beehave::result::Result;
+use beehave::node::Node;
+use beehave::action::Action;
+use helpers;
+use helpers::TestTarget;
 
 #[test]
 fn constructor_new() {
