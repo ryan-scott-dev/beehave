@@ -7,6 +7,7 @@
 #![feature(rand)]
 
 extern crate test;
+extern crate rand;
 
 // Example based on the example provided by http://machinejs.maryrosecook.com
 
@@ -15,13 +16,14 @@ use std::rc::Rc;
 use std::old_io::Timer;
 use std::time::Duration;
 
+#[macro_use]
 mod austin;
 
 use austin::sequence::Sequence;
 use austin::selector::Selector;
+use austin::conditional_decorator::ConditionalDecorator;
 use austin::action::Action;
 use austin::node::Node;
-use austin::node_collection::NodeCollection;
 use austin::result::Result;
 
 #[allow(dead_code)]
@@ -33,76 +35,78 @@ use example::tree::Tree;
 use test::Bencher;
 
 fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>) {
-    let mut world_behaviour: Selector<'static, World> = Selector::with_capacity("World Root", 2);
-    world_behaviour.add(Box::new(Action::new("Day/Night Cycle", |world: &mut World| {
-            if world.can_shine() {
+    let world_behaviour: Selector<World> = behaviour_selector!("World Root", [
+        condition!("Ensure Can Shine",
+            |world: &mut World| {
+                world.can_shine()
+            },
+            action!("Cycle Day/Night", |world: &mut World| {
                 world.toggle_sun();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
-
-    world_behaviour.add(Box::new(Action::new("Rain", |world: &mut World| {
-            if world.can_rain() {
+            })
+        ),
+        condition!("Ensure Can Rain",
+            |world: &mut World| {
+                world.can_rain()
+            },
+            action!("Rain", |world: &mut World| {
                 world.rain();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
+            })
+        )
+    ]);
 
-    let mut photosynthesise: Sequence<Tree> = Sequence::with_capacity("Photosynthesise", 3);
-    photosynthesise.add(Box::new(Action::new("Make Energy", |tree: &mut Tree| {
-            if tree.can_make_energy() {
+    let photosynthesise: Sequence<Tree> = behaviour_sequence!("Photosynthesise", [
+        condition!("Ensure Can Make Energy",
+            |tree: &mut Tree| {
+                tree.can_make_energy()
+            },
+            action!("Make Energy", |tree: &mut Tree| {
                 tree.make_energy();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
-    photosynthesise.add(Box::new(Action::new("Grow", |tree: &mut Tree| {
-            if tree.can_grow() {
+            })
+        ),
+        condition!("Ensure Can Grow",
+            |tree: &mut Tree| {
+                tree.can_grow()
+            },
+            action!("Grow", |tree: &mut Tree| {
                 tree.grow();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
-    photosynthesise.add(Box::new(Action::new("Emit Oxygen", |tree: &mut Tree| {
-            if tree.can_emit_oxygen() {
+            })
+        ),
+        condition!("Ensure Can Emit Oxygen",
+            |tree: &mut Tree| {
+                tree.can_emit_oxygen()
+            },
+            action!("Emit Oxygen", |tree: &mut Tree| {
                 tree.emit_oxygen();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
+            })
+        )
+    ]);
 
-    let mut tree_behaviour: Selector<'static, Tree> = Selector::with_capacity("Tree Root", 3);
-    tree_behaviour.add(Box::new(photosynthesise));
-    tree_behaviour.add(Box::new(Action::new("Gather Sun", |tree: &mut Tree| {
-            if tree.can_gather_sun() {
+    let tree_behaviour: Selector<Tree> = behaviour_selector!("Tree Root", [
+        photosynthesise,
+        condition!("Ensure Can Gather Sun",
+            |tree: &mut Tree| {
+                tree.can_gather_sun()
+            },
+            action!("Emit Oxygen", |tree: &mut Tree| {
                 tree.gather_sun();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
-    tree_behaviour.add(Box::new(Action::new("Gather Water", |tree: &mut Tree| {
-            if tree.can_gather_water() {
+            })
+        ),
+        condition!("Ensure Can Gather Water",
+            |tree: &mut Tree| {
+                tree.can_gather_water()
+            },
+            action!("Emit Oxygen", |tree: &mut Tree| {
                 tree.gather_water();
                 Result::Success
-            } else {
-                Result::Failure
-            }
-        }
-    )));
+            })
+        )
+    ]);
 
     (world_behaviour, tree_behaviour)
 }

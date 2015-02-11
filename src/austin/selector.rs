@@ -23,6 +23,17 @@ impl <'a, T> Selector<'a, T> {
         }
     }
 
+    pub fn with_children(name: &'static str, children: Vec<Box<Node<T> + 'a>>) -> Selector<'a, T> {
+        Selector {
+            name: name,
+            children: children
+        }
+    }
+
+    pub fn children(&mut self, new_children: Vec<Box<Node<T> + 'a>>) {
+        self.children = new_children;
+    }
+
 }
 
 impl <'a, T> Node<T> for Selector<'a, T> {

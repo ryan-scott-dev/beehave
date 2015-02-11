@@ -1,6 +1,7 @@
 use austin::result::Result;
 use austin::node::Node;
 
+#[derive(Clone, PartialEq, Eq)]
 pub struct TestTarget {
     pub foo: bool,
     pub bar: u32
