@@ -1,5 +1,5 @@
 use beehave::result::Result;
-use beehave::node::Node;
+use beehave::tree_node::TreeNode;
 use beehave::conditional::Conditional;
 use helpers::TestTarget;
 

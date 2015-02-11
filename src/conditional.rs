@@ -1,5 +1,5 @@
 use result::Result;
-use node::Node;
+use tree_node::TreeNode;
 
 pub struct Conditional<T, F> {
     pub name: &'static str,
@@ -17,7 +17,7 @@ impl <T, F: FnMut(&mut T) -> bool> Conditional<T, F> {
 
 }
 
-impl <T, F: FnMut(&mut T) -> bool> Node<T> for Conditional<T, F> {
+impl <T, F: FnMut(&mut T) -> bool> TreeNode<T> for Conditional<T, F> {
 
     fn evaluate(&mut self, target: &mut T) -> Result {
         let args = (target,);

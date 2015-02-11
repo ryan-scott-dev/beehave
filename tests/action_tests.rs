@@ -1,27 +1,22 @@
 use beehave::result::Result;
-use beehave::node::Node;
+use beehave::tree_action::TreeAction;
 use beehave::action::Action;
 use helpers;
 use helpers::TestTarget;
 
 #[test]
 fn constructor_new() {
-    let action = Action::new("Test Action", |_: &mut TestTarget| { Result::Success });
+    let action = Action::new("Test Action", |_: &mut TestTarget| { });
     assert!(action.name == "Test Action");
 }
 
 #[test]
-fn evalute_returns_method_result() {
-    let expected_results = helpers::result_methods();
+fn evalute_returns_success() {
     let mut target = TestTarget::new();
+    let mut action = Action::new("Test Action", |_: &mut TestTarget| { });
 
-    for expected_result in expected_results.iter() {
-        let mut action = Action::new("Test Action", |_: &mut TestTarget| { expected_result.clone() });
-
-        let result = action.evaluate(&mut target);
-        assert!(result == expected_result.clone());
-    }
-
+    let result = action.evaluate(&mut target);
+    assert!(result == Result::Success);
 }
 
 #[test]
@@ -33,7 +28,6 @@ fn evalute_mutates_target() {
     let mut action = Action::new("Test Action", |target: &mut TestTarget| {
         target.foo = true;
         target.bar = 32;
-        Result::Success
     });
 
     let _ = action.evaluate(&mut target);

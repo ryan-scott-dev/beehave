@@ -18,8 +18,7 @@ use beehave::sequence::Sequence;
 use beehave::selector::Selector;
 use beehave::conditional_decorator::ConditionalDecorator;
 use beehave::action::Action;
-use beehave::node::Node;
-use beehave::result::Result;
+use beehave::tree_node::TreeNode;
 
 mod world;
 mod tree;
@@ -34,8 +33,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 world.can_shine()
             },
             action!("Cycle Day/Night", |world: &mut World| {
-                world.toggle_sun();
-                Result::Success
+                world.toggle_sun()
             })
         ),
         condition!("Ensure Can Rain",
@@ -43,8 +41,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 world.can_rain()
             },
             action!("Rain", |world: &mut World| {
-                world.rain();
-                Result::Success
+                world.rain()
             })
         )
     ]);
@@ -56,8 +53,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                     tree.can_make_energy()
                 },
                 action!("Make Energy", |tree: &mut Tree| {
-                    tree.make_energy();
-                    Result::Success
+                    tree.make_energy()
                 })
             ),
             condition!("Ensure Can Grow",
@@ -65,8 +61,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                     tree.can_grow()
                 },
                 action!("Grow", |tree: &mut Tree| {
-                    tree.grow();
-                    Result::Success
+                    tree.grow()
                 })
             ),
             condition!("Ensure Can Emit Oxygen",
@@ -74,8 +69,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                     tree.can_emit_oxygen()
                 },
                 action!("Emit Oxygen", |tree: &mut Tree| {
-                    tree.emit_oxygen();
-                    Result::Success
+                    tree.emit_oxygen()
                 })
             )
         ]),
@@ -84,8 +78,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 tree.can_gather_sun()
             },
             action!("Emit Oxygen", |tree: &mut Tree| {
-                tree.gather_sun();
-                Result::Success
+                tree.gather_sun()
             })
         ),
         condition!("Ensure Can Gather Water",
@@ -93,8 +86,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 tree.can_gather_water()
             },
             action!("Emit Oxygen", |tree: &mut Tree| {
-                tree.gather_water();
-                Result::Success
+                tree.gather_water()
             })
         )
     ]);
