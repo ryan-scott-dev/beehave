@@ -16,7 +16,7 @@ use beehave::sequence::Sequence;
 use beehave::selector::Selector;
 use beehave::conditional_decorator::ConditionalDecorator;
 use beehave::action::Action;
-use beehave::tree_node::TreeNode;
+use beehave::behaviour_node::BehaviourNode;
 
 mod world;
 mod tree;

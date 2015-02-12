@@ -1,7 +1,7 @@
 #![feature(core, unboxed_closures)]
 
 pub mod behaviour_result;
-pub mod tree_node;
+pub mod behaviour_node;
 
 pub mod sequence;
 pub mod selector;

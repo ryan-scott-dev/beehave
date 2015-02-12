@@ -1,5 +1,5 @@
 use beehave::behaviour_result::BehaviourResult;
-use beehave::tree_node::TreeNode;
+use beehave::behaviour_node::BehaviourNode;
 use beehave::sequence::{ Sequence };
 use helpers;
 use helpers::TestTarget;

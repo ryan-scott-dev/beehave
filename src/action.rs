@@ -1,5 +1,5 @@
 use behaviour_result::BehaviourResult;
-use tree_node::TreeNode;
+use behaviour_node::BehaviourNode;
 
 pub struct Action<T, F> {
     pub name: &'static str,
@@ -17,7 +17,7 @@ impl <T, F: FnMut(&mut T)> Action<T, F> {
 
 }
 
-impl <T, F: FnMut(&mut T)> TreeNode<T> for Action<T, F> {
+impl <T, F: FnMut(&mut T)> BehaviourNode<T> for Action<T, F> {
 
     fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
         let args = (target,);
