@@ -25,10 +25,19 @@ macro_rules! behaviour_selector(
 );
 
 #[macro_export]
-macro_rules! condition(
+macro_rules! condition_decorator(
     {$name:expr, $value:expr, $child:expr} => {
         {
             ConditionalDecorator::with_child($name, $value, Box::new($child))
+        }
+    };
+);
+
+#[macro_export]
+macro_rules! condition(
+    {$name:expr, $value:expr} => {
+        {
+            Conditional::new($name, $value)
         }
     };
 );

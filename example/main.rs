@@ -26,7 +26,7 @@ use tree::Tree;
 
 fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>) {
     let world_behaviour: Selector<World> = behaviour_selector!("World Root", [
-        condition!("Ensure Can Shine",
+        condition_decorator!("Ensure Can Shine",
             |world: &mut World| {
                 world.can_shine()
             },
@@ -34,7 +34,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 world.toggle_sun()
             })
         ),
-        condition!("Ensure Can Rain",
+        condition_decorator!("Ensure Can Rain",
             |world: &mut World| {
                 world.can_rain()
             },
@@ -46,7 +46,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
 
     let tree_behaviour: Selector<Tree> = behaviour_selector!("Tree Root", [
         behaviour_sequence!("Photosynthesise", [
-            condition!("Ensure Can Make Energy",
+            condition_decorator!("Ensure Can Make Energy",
                 |tree: &mut Tree| {
                     tree.can_make_energy()
                 },
@@ -54,7 +54,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                     tree.make_energy()
                 })
             ),
-            condition!("Ensure Can Grow",
+            condition_decorator!("Ensure Can Grow",
                 |tree: &mut Tree| {
                     tree.can_grow()
                 },
@@ -62,7 +62,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                     tree.grow()
                 })
             ),
-            condition!("Ensure Can Emit Oxygen",
+            condition_decorator!("Ensure Can Emit Oxygen",
                 |tree: &mut Tree| {
                     tree.can_emit_oxygen()
                 },
@@ -71,7 +71,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 })
             )
         ]),
-        condition!("Ensure Can Gather Sun",
+        condition_decorator!("Ensure Can Gather Sun",
             |tree: &mut Tree| {
                 tree.can_gather_sun()
             },
@@ -79,7 +79,7 @@ fn build_behaviour_trees() -> (Selector<'static, World>, Selector<'static, Tree>
                 tree.gather_sun()
             })
         ),
-        condition!("Ensure Can Gather Water",
+        condition_decorator!("Ensure Can Gather Water",
             |tree: &mut Tree| {
                 tree.can_gather_water()
             },
