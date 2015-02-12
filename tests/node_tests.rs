@@ -1,6 +1,4 @@
-use beehave::behaviour_result::BehaviourResult;
-use beehave::behaviour_node::BehaviourNode;
-use beehave::node::Node;
+use beehave::{ BehaviourResult, BehaviourNode, Node };
 use helpers;
 use helpers::TestTarget;
 

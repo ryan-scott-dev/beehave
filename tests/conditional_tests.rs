@@ -1,6 +1,4 @@
-use beehave::behaviour_result::BehaviourResult;
-use beehave::behaviour_node::BehaviourNode;
-use beehave::conditional::Conditional;
+use beehave::{ BehaviourResult, BehaviourNode, Conditional };
 use helpers::TestTarget;
 
 #[test]

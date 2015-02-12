@@ -12,11 +12,7 @@ use std::rc::Rc;
 use std::old_io::Timer;
 use std::time::Duration;
 
-use beehave::sequence::Sequence;
-use beehave::selector::Selector;
-use beehave::conditional_decorator::ConditionalDecorator;
-use beehave::action::Action;
-use beehave::behaviour_node::BehaviourNode;
+use beehave::{ Sequence, Selector, ConditionalDecorator, Action, BehaviourNode };
 
 mod world;
 mod tree;

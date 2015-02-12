@@ -1,5 +1,4 @@
-use beehave::behaviour_result::BehaviourResult;
-use beehave::behaviour_node::BehaviourNode;
+use beehave::{ BehaviourResult, BehaviourNode };
 
 #[derive(Clone, PartialEq, Eq)]
 pub struct TestTarget {

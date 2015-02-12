@@ -1,6 +1,4 @@
-use beehave::behaviour_result::BehaviourResult;
-use beehave::tree_action::TreeAction;
-use beehave::action::Action;
+use beehave::{ BehaviourResult, TreeAction, Action };
 use helpers;
 use helpers::TestTarget;
 

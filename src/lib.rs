@@ -15,15 +15,24 @@
 
 #![feature(core, unboxed_closures)]
 
-pub mod behaviour_result;
-pub mod behaviour_node;
+pub use behaviour_result::BehaviourResult;
+pub use behaviour_node::BehaviourNode;
+pub use sequence::Sequence;
+pub use selector::Selector;
+pub use node::Node;
+pub use action::Action;
+pub use conditional::Conditional;
+pub use conditional_decorator::ConditionalDecorator;
 
-pub mod sequence;
-pub mod selector;
-pub mod node;
-pub mod action;
-pub mod conditional;
-pub mod conditional_decorator;
+mod behaviour_result;
+mod behaviour_node;
+
+mod sequence;
+mod selector;
+mod node;
+mod action;
+mod conditional;
+mod conditional_decorator;
 
 #[macro_use]
 pub mod macros;

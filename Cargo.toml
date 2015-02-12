@@ -6,7 +6,7 @@ authors = ["Ryan Scott <atthealma@gmail.com>"]
 
 readme = "README.md"
 license = "MIT"
-keywords = ["behaviour", "fsm", "ai", "state machine", "game"]
+keywords = ["behaviour", "fsm", "ai", "state", "game"]
 
 homepage = "https://github.com/Archytaus/beehave"
 repository = "https://github.com/Archytaus/beehave"
@@ -25,7 +25,6 @@ doc = false
 name = "beehave"
 path = "src/lib.rs"
 doctest = false
-doc = false
 bench = false
 
 [[test]]
