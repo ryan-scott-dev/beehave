@@ -1,6 +1,7 @@
 use behaviour_result::BehaviourResult;
 use behaviour_node::BehaviourNode;
 
+/// A decorator which only evaluates the child node if the callback function returns `true`.
 pub struct ConditionalDecorator<'a, T, F> {
     pub name: &'static str,
     callback: F,

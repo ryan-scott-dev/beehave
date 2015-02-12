@@ -1,9 +1,13 @@
 use behaviour_result::BehaviourResult;
 use behaviour_node::BehaviourNode;
 
+/// A composite node which stops evaluating it's children and returns `BehaviourResult::Success` when a child returns `BehaviourResult::Success`.
+/// Child nodes can also be added to this node.
+/// A `BehaviourResult::Success` indicates that one of it's children return `BehaviourResult::Failure` when evaluated
+/// A `BehaviourResult::Failure` indicates that none it's children returned `BehaviourResult::Success` when evaluated.
 pub struct Selector<'a, T> {
     pub name: &'static str,
-    pub children: Vec<Box<BehaviourNode<T> + 'a>>
+    children: Vec<Box<BehaviourNode<T> + 'a>>
 }
 
 impl <'a, T> Selector<'a, T> {

@@ -1,9 +1,10 @@
 use behaviour_result::BehaviourResult;
 use behaviour_node::BehaviourNode;
 
+/// A simple callback function performed on the actor. The result of the callback function is used as the result of `evaluate`.
 pub struct Node<T, F> {
     pub name: &'static str,
-    pub callback: F
+    callback: F
 }
 
 impl <T, F: FnMut(&mut T) -> BehaviourResult> Node<T, F> {

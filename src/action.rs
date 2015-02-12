@@ -1,9 +1,10 @@
 use behaviour_result::BehaviourResult;
 use behaviour_node::BehaviourNode;
 
+/// A simple callback function performed on the actor. This always returns `BehaviourResult::Success`.
 pub struct Action<T, F> {
     pub name: &'static str,
-    pub callback: F
+    callback: F
 }
 
 impl <T, F: FnMut(&mut T)> Action<T, F> {
