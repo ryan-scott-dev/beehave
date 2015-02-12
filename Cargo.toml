@@ -1,7 +1,15 @@
 [package]
 name = "beehave"
+description = "A simple library for defining and evaluating a hierarchical state machine."
 version = "0.0.1"
 authors = ["Ryan Scott <atthealma@gmail.com>"]
+
+readme = "README.md"
+license = "MIT"
+keywords = ["behaviour", "fsm", "ai", "state machine", "game"]
+
+homepage = "https://github.com/Archytaus/beehave"
+repository = "https://github.com/Archytaus/beehave"
 
 [[bin]]
 
