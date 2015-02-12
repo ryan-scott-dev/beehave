@@ -1,6 +1,8 @@
 # Beehave [![Build Status](https://travis-ci.org/Archytaus/beehave.svg)](https://travis-ci.org/Archytaus/beehave)
 
-A simple library for defining and executing behaviour trees on an actor.
+A simple library for A simple library for defining and evaluating a hierarchical state machine (behaviour tree).
+
+[Documentation](https://archytaus.github.io/beehave/beehave)
 
 ## Example
 

@@ -1,6 +1,6 @@
 [package]
 name = "beehave"
-description = "A simple library for defining and evaluating a hierarchical state machine."
+description = "A simple library for defining and evaluating a hierarchical state machine (behaviour tree)."
 version = "0.0.2"
 authors = ["Ryan Scott <atthealma@gmail.com>"]
 
