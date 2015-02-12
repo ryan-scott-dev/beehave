@@ -4,8 +4,8 @@ use behaviour_node::BehaviourNode;
 /// A decorator which only evaluates the child node if the callback function returns `true`.
 pub struct ConditionalDecorator<'a, T, F> {
     pub name: &'static str,
-    callback: F,
-    child: Box<BehaviourNode<T> + 'a>
+    pub child: Box<BehaviourNode<T> + 'a>,
+    callback: F
 }
 
 impl <'a, T, F: FnMut(&mut T) -> bool + 'a> ConditionalDecorator<'a, T, F> {

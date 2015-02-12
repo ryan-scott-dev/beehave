@@ -7,7 +7,7 @@ use behaviour_node::BehaviourNode;
 /// A `BehaviourResult::Failure` indicates that none it's children returned `BehaviourResult::Success` when evaluated.
 pub struct Selector<'a, T> {
     pub name: &'static str,
-    children: Vec<Box<BehaviourNode<T> + 'a>>
+    pub children: Vec<Box<BehaviourNode<T> + 'a>>
 }
 
 impl <'a, T> Selector<'a, T> {

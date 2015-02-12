@@ -7,7 +7,7 @@ use behaviour_node::BehaviourNode;
 /// A `BehaviourResult::Failure` indicates that one it's children returned `BehaviourResult::Failure` when evaluated.
 pub struct Sequence<'a, T> {
     pub name: &'static str,
-    children: Vec<Box<BehaviourNode<T> + 'a>>
+    pub children: Vec<Box<BehaviourNode<T> + 'a>>
 }
 
 impl <'a, T> Sequence<'a, T> {
