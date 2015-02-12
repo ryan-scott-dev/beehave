@@ -1,4 +1,4 @@
-use result::Result;
+use behaviour_result::BehaviourResult;
 use tree_node::TreeNode;
 
 pub struct Node<T, F> {
@@ -6,7 +6,7 @@ pub struct Node<T, F> {
     pub callback: F
 }
 
-impl <T, F: FnMut(&mut T) -> Result> Node<T, F> {
+impl <T, F: FnMut(&mut T) -> BehaviourResult> Node<T, F> {
 
     pub fn new(name: &'static str, callback: F) -> Node<T, F> {
         Node {
@@ -17,9 +17,9 @@ impl <T, F: FnMut(&mut T) -> Result> Node<T, F> {
 
 }
 
-impl <T, F: FnMut(&mut T) -> Result> TreeNode<T> for Node<T, F> {
+impl <T, F: FnMut(&mut T) -> BehaviourResult> TreeNode<T> for Node<T, F> {
 
-    fn evaluate(&mut self, target: &mut T) -> Result {
+    fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
         let args = (target,);
         self.callback.call_mut(args)
     }

@@ -1,4 +1,4 @@
-use result::Result;
+use behaviour_result::BehaviourResult;
 use tree_node::TreeNode;
 
 pub struct Action<T, F> {
@@ -19,10 +19,10 @@ impl <T, F: FnMut(&mut T)> Action<T, F> {
 
 impl <T, F: FnMut(&mut T)> TreeNode<T> for Action<T, F> {
 
-    fn evaluate(&mut self, target: &mut T) -> Result {
+    fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
         let args = (target,);
         self.callback.call_mut(args);
-        Result::Success
+        BehaviourResult::Success
     }
 
 }

@@ -2,8 +2,6 @@
 #![feature(std_misc)]
 #![feature(rand)]
 
-extern crate rand;
-
 #[macro_use]
 extern crate beehave;
 

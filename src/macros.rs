@@ -41,3 +41,12 @@ macro_rules! action(
         }
     };
 );
+
+#[macro_export]
+macro_rules! node(
+    {$name:expr, $value:expr} => {
+        {
+            Node::new($name, $value)
+        }
+    };
+);

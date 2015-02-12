@@ -1,4 +1,4 @@
-use beehave::result::Result;
+use beehave::behaviour_result::BehaviourResult;
 use beehave::tree_node::TreeNode;
 use beehave::conditional_decorator::ConditionalDecorator;
 use helpers;
@@ -14,7 +14,7 @@ fn evalute_child_with_true_success() {
     );
 
     let result = conditional_decorator.evaluate(&mut target);
-    assert!(result == Result::Success);
+    assert!(result == BehaviourResult::Success);
 }
 
 #[test]
@@ -27,7 +27,7 @@ fn evalute_child_with_true_failure() {
     );
 
     let result = conditional_decorator.evaluate(&mut target);
-    assert!(result == Result::Failure);
+    assert!(result == BehaviourResult::Failure);
 }
 
 #[test]
@@ -40,7 +40,7 @@ fn evalute_child_with_true_pending() {
     );
 
     let result = conditional_decorator.evaluate(&mut target);
-    assert!(result == Result::Pending);
+    assert!(result == BehaviourResult::Pending);
 }
 
 #[test]
@@ -53,5 +53,5 @@ fn evalute_conditional_failure() {
     );
 
     let result = conditional_decorator.evaluate(&mut target);
-    assert!(result == Result::Failure);
+    assert!(result == BehaviourResult::Failure);
 }

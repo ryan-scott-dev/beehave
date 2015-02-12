@@ -1,4 +1,4 @@
-use beehave::result::Result;
+use beehave::behaviour_result::BehaviourResult;
 use beehave::tree_node::TreeNode;
 use beehave::conditional::Conditional;
 use helpers::TestTarget;
@@ -15,7 +15,7 @@ fn evalute_failure_with_false() {
     let mut target = TestTarget::new();
 
     let result = conditional.evaluate(&mut target);
-    assert!(result == Result::Failure);
+    assert!(result == BehaviourResult::Failure);
 }
 
 #[test]
@@ -24,7 +24,7 @@ fn evalute_success_with_true() {
     let mut target = TestTarget::new();
 
     let result = conditional.evaluate(&mut target);
-    assert!(result == Result::Success);
+    assert!(result == BehaviourResult::Success);
 }
 
 #[test]

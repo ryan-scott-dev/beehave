@@ -1,6 +1,5 @@
-use result::Result;
+use behaviour_result::BehaviourResult;
 use tree_node::TreeNode;
-use node_collection::TreeNodeCollection;
 
 pub struct Selector<'a, T> {
     pub name: &'static str,
@@ -34,27 +33,25 @@ impl <'a, T> Selector<'a, T> {
         self.children = new_children;
     }
 
+    pub fn add(&mut self, new_child: Box<TreeNode<T> + 'a>) {
+        self.children.push(new_child);
+    }
+
 }
 
 impl <'a, T> TreeNode<T> for Selector<'a, T> {
 
-    fn evaluate(&mut self, target: &mut T) -> Result {
+    fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
 
         for child in self.children.iter_mut() {
             let result = child.evaluate(target);
             match result {
-                Result::Failure => { /* Null-Op */ },
+                BehaviourResult::Failure => { /* Null-Op */ },
                 _ => { return result; }
             }
         }
 
-        Result::Failure
+        BehaviourResult::Failure
     }
 
-}
-
-impl <'a, T> TreeNodeCollection<'a, T> for Selector<'a, T> {
-    fn add(&mut self, new_child: Box<TreeNode<T> + 'a>) {
-        self.children.push(new_child);
-    }
 }

@@ -1,4 +1,4 @@
-use beehave::result::Result;
+use beehave::behaviour_result::BehaviourResult;
 use beehave::tree_node::TreeNode;
 
 #[derive(Clone, PartialEq, Eq)]
@@ -19,31 +19,31 @@ impl TestTarget {
 struct SuccessTreeNode;
 
 impl <T> TreeNode<T> for SuccessTreeNode {
-    fn evaluate(&mut self, _: &mut T) -> Result {
-        Result::Success
+    fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
+        BehaviourResult::Success
     }
 }
 
 struct FailureTreeNode;
 
 impl <T> TreeNode<T> for FailureTreeNode {
-    fn evaluate(&mut self, _: &mut T) -> Result {
-        Result::Failure
+    fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
+        BehaviourResult::Failure
     }
 }
 
 struct PendingTreeNode;
 
 impl <T> TreeNode<T> for PendingTreeNode {
-    fn evaluate(&mut self, _: &mut T) -> Result {
-        Result::Pending
+    fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
+        BehaviourResult::Pending
     }
 }
 
 struct RaiseErrorTreeNode;
 
 impl <T> TreeNode<T> for RaiseErrorTreeNode {
-    fn evaluate(&mut self, _: &mut T) -> Result {
+    fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
         panic!("I should not have been called...");
     }
 }
@@ -64,6 +64,6 @@ pub fn raise_error() -> RaiseErrorTreeNode {
     RaiseErrorTreeNode
 }
 
-pub fn result_methods() -> [Result;3] {
-    [ Result::Failure, Result::Success, Result::Pending ]
+pub fn result_methods() -> [BehaviourResult;3] {
+    [ BehaviourResult::Failure, BehaviourResult::Success, BehaviourResult::Pending ]
 }

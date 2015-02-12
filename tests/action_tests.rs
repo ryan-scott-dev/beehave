@@ -1,4 +1,4 @@
-use beehave::result::Result;
+use beehave::behaviour_result::BehaviourResult;
 use beehave::tree_action::TreeAction;
 use beehave::action::Action;
 use helpers;
@@ -16,7 +16,7 @@ fn evalute_returns_success() {
     let mut action = Action::new("Test Action", |_: &mut TestTarget| { });
 
     let result = action.evaluate(&mut target);
-    assert!(result == Result::Success);
+    assert!(result == BehaviourResult::Success);
 }
 
 #[test]

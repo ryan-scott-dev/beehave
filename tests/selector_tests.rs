@@ -1,7 +1,6 @@
-use beehave::result::Result;
+use beehave::behaviour_result::BehaviourResult;
 use beehave::tree_node::TreeNode;
 use beehave::selector::{ Selector };
-use beehave::node_collection::TreeNodeCollection;
 use helpers;
 use helpers::TestTarget;
 
@@ -25,7 +24,7 @@ fn evaluate_failure_when_empty() {
     let mut target = TestTarget::new();
 
     let result = selector.evaluate(&mut target);
-    assert!(result == Result::Failure)
+    assert!(result == BehaviourResult::Failure)
 }
 
 #[test]
@@ -36,7 +35,7 @@ fn evaluate_success_with_success() {
     selector.add(Box::new(helpers::success()));
 
     let result = selector.evaluate(&mut target);
-    assert!(result == Result::Success)
+    assert!(result == BehaviourResult::Success)
 }
 
 #[test]
@@ -47,7 +46,7 @@ fn evaluate_failure_with_failure() {
     selector.add(Box::new(helpers::failure()));
 
     let result = selector.evaluate(&mut target);
-    assert!(result == Result::Failure)
+    assert!(result == BehaviourResult::Failure)
 }
 
 #[test]
@@ -58,7 +57,7 @@ fn evaluate_pending_with_pending() {
     selector.add(Box::new(helpers::pending()));
 
     let result = selector.evaluate(&mut target);
-    assert!(result == Result::Pending)
+    assert!(result == BehaviourResult::Pending)
 }
 
 #[test]
@@ -71,7 +70,7 @@ fn evaluate_success_short_circuits() {
     selector.add(Box::new(helpers::raise_error()));
 
     let result = selector.evaluate(&mut target);
-    assert!(result == Result::Success)
+    assert!(result == BehaviourResult::Success)
 }
 
 #[test]
@@ -84,5 +83,5 @@ fn evaluate_pending_short_circuits() {
     selector.add(Box::new(helpers::raise_error()));
 
     let result = selector.evaluate(&mut target);
-    assert!(result == Result::Pending)
+    assert!(result == BehaviourResult::Pending)
 }

@@ -1,4 +1,4 @@
-use result::Result;
+use behaviour_result::BehaviourResult;
 use tree_node::TreeNode;
 
 pub struct Conditional<T, F> {
@@ -19,12 +19,12 @@ impl <T, F: FnMut(&mut T) -> bool> Conditional<T, F> {
 
 impl <T, F: FnMut(&mut T) -> bool> TreeNode<T> for Conditional<T, F> {
 
-    fn evaluate(&mut self, target: &mut T) -> Result {
+    fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
         let args = (target,);
         if self.callback.call_mut(args) {
-            Result::Success
+            BehaviourResult::Success
         } else {
-            Result::Failure
+            BehaviourResult::Failure
         }
 
     }

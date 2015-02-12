@@ -1,4 +1,4 @@
-use result::Result;
+use behaviour_result::BehaviourResult;
 use tree_node::TreeNode;
 
 pub struct ConditionalDecorator<'a, T, F> {
@@ -21,11 +21,11 @@ impl <'a, T, F: FnMut(&mut T) -> bool + 'a> ConditionalDecorator<'a, T, F> {
 
 impl <'a, T: Clone, F: FnMut(&mut T) -> bool> TreeNode<T> for ConditionalDecorator<'a, T, F> {
 
-    fn evaluate(&mut self, target: &mut T) -> Result {
+    fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
         if self.callback.call_mut((&mut target.clone(),)) {
             self.child.evaluate(target)
         } else {
-            Result::Failure
+            BehaviourResult::Failure
         }
     }
 

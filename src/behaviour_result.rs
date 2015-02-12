@@ -1,5 +1,5 @@
 #[derive(Clone, Debug, PartialEq, Eq)]
-pub enum Result {
+pub enum BehaviourResult {
     Success,
     Failure,
     Pending

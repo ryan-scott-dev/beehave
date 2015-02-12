@@ -1,4 +1,4 @@
-use beehave::result::Result;
+use beehave::behaviour_result::BehaviourResult;
 use beehave::tree_node::TreeNode;
 use beehave::node::Node;
 use helpers;
@@ -6,7 +6,7 @@ use helpers::TestTarget;
 
 #[test]
 fn constructor_new() {
-    let node = Node::new("Test Node", |_: &mut TestTarget| { Result::Success });
+    let node = Node::new("Test Node", |_: &mut TestTarget| { BehaviourResult::Success });
     assert!(node.name == "Test Node");
 }
 
@@ -33,7 +33,7 @@ fn evalute_mutates_target() {
     let mut node = Node::new("Test Node", |target: &mut TestTarget| {
         target.foo = true;
         target.bar = 32;
-        Result::Success
+        BehaviourResult::Success
     });
 
     let _ = node.evaluate(&mut target);
