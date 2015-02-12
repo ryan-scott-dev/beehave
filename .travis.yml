@@ -1,1 +1,12 @@
 language: rust
+
+env:
+  global:
+    secure: PEL3f6uv3I7thTeh0gZcBmls4ffG+CjpwzFW/jOu1lYdKtmv5/bVbIHPU9Pw7eN3LTpLeaVHQvFVnPNNzIKjOtnG6ojgMPL+akl3/z2LL2DgySDaDbs0jtx+6C9WGBKFFdf4Jod07FhzzqbYfy+fmKk/O7eK3D5Knb69YSnSjPc=
+
+script:
+  - cargo test
+  - cargo doc --no-deps
+
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./.travis/update_docs.sh
