@@ -9,9 +9,9 @@
 //! ```
 //!
 
-#![doc(html_logo_url = "http://www.rust-lang.org/logos/rust-logo-128x128-blk.png",
-       html_favicon_url = "http://www.rust-lang.org/favicon.ico",
-       html_root_url = "TODO FIX ME")]
+#![doc(html_logo_url = "http://rust-lang.org/logos/rust-logo-128x128-blk.png",
+       html_favicon_url = "http://rust-lang.org/favicon.ico",
+       html_root_url = "https://archytaus.github.io/beehave/beehave")]
 
 #![feature(core, unboxed_closures)]
 
