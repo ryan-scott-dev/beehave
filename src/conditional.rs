@@ -2,8 +2,10 @@ use behaviour_result::BehaviourResult;
 use behaviour_node::BehaviourNode;
 
 /// A simple action performed on the actor.
+///
 /// This transforms the result into either `BehaviourResult::Success` or `BehaviourResult::Failure`,
 /// depending on the result of the callback function.
+///
 pub struct Conditional<F> {
     pub name: &'static str,
     callback: F

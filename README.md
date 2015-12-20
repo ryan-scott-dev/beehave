@@ -85,7 +85,7 @@ tree_behaviour.evaluate(&mut tree);
 world_behaviour.evaluate(&mut world);
 ```
 
-For more information please see the [full example](./example).
+For more information please see the [full example](./examples).
 
 ## Design Goals
 
@@ -98,4 +98,4 @@ For more information please see the [full example](./example).
 
 ## License
 
-Component Experiment was created by [Ryan Scott](http://github.com/archytaus) is distributed under the [MIT](http://ryanscott.mit-license.org) license.
+Beehave was created by [Ryan Scott](http://github.com/archytaus) is distributed under the [MIT](http://ryanscott.mit-license.org) license.

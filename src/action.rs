@@ -1,7 +1,9 @@
 use behaviour_result::BehaviourResult;
 use behaviour_node::BehaviourNode;
 
-/// A simple callback function performed on the actor. This always returns `BehaviourResult::Success`.
+/// A simple callback function performed on the actor.
+///
+/// This always returns `BehaviourResult::Success`.
 pub struct Action<F> {
     pub name: &'static str,
     callback: F
