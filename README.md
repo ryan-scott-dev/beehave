@@ -4,6 +4,12 @@ A simple library for A simple library for defining and evaluating a hierarchical
 
 [Documentation](https://archytaus.github.io/beehave/beehave)
 
+## Compatibility
+
+Because this library uses `fn_traits` and `unboxed_closures` it will only compile using rust nightly.
+
+This was last tested against `rustc 1.7.0-nightly (8ad12c3e2 2015-12-19)`
+
 ## Example
 
 Building a behaviour tree using the supplied macros:
