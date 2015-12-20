@@ -4,7 +4,7 @@ rust:
 
 env:
   global:
-    secure: PEL3f6uv3I7thTeh0gZcBmls4ffG+CjpwzFW/jOu1lYdKtmv5/bVbIHPU9Pw7eN3LTpLeaVHQvFVnPNNzIKjOtnG6ojgMPL+akl3/z2LL2DgySDaDbs0jtx+6C9WGBKFFdf4Jod07FhzzqbYfy+fmKk/O7eK3D5Knb69YSnSjPc=
+    secure: "CcdV2J4ElRioFt4bjlgo3YY4mj8HTFv+t4lrpWIwisCCjxlZEQUsNpM820AmkLA4Q4C21GKKgpiw/Ef+S7WznuUJlMBobBFGPB+rr+xORFCyaNm9nyfJ+zLPuNBe9E+/X5CWkDtXzzNistxLDCnvrUOVOR4uQF5cxI0PB4VUqs8="
 
 script:
   - cargo test
