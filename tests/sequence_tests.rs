@@ -10,7 +10,7 @@ fn constructor_new() {
 
 #[test]
 fn constructor_with_capacity() {
-    let expected_capacity: usize = 10us;
+    let expected_capacity: usize = 10;
     let sequence = Sequence::<TestTarget>::with_capacity("Test Sequence", expected_capacity);
     assert!(sequence.name == "Test Sequence");
     assert!(sequence.children.capacity() == expected_capacity);

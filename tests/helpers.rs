@@ -15,7 +15,7 @@ impl TestTarget {
     }
 }
 
-struct SuccessBehaviourNode;
+pub struct SuccessBehaviourNode;
 
 impl <T> BehaviourNode<T> for SuccessBehaviourNode {
     fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
@@ -23,7 +23,7 @@ impl <T> BehaviourNode<T> for SuccessBehaviourNode {
     }
 }
 
-struct FailureBehaviourNode;
+pub struct FailureBehaviourNode;
 
 impl <T> BehaviourNode<T> for FailureBehaviourNode {
     fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
@@ -31,7 +31,7 @@ impl <T> BehaviourNode<T> for FailureBehaviourNode {
     }
 }
 
-struct PendingBehaviourNode;
+pub struct PendingBehaviourNode;
 
 impl <T> BehaviourNode<T> for PendingBehaviourNode {
     fn evaluate(&mut self, _: &mut T) -> BehaviourResult {
@@ -39,7 +39,7 @@ impl <T> BehaviourNode<T> for PendingBehaviourNode {
     }
 }
 
-struct RaiseErrorBehaviourNode;
+pub struct RaiseErrorBehaviourNode;
 
 impl <T> BehaviourNode<T> for RaiseErrorBehaviourNode {
     fn evaluate(&mut self, _: &mut T) -> BehaviourResult {

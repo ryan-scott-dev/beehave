@@ -2,10 +2,28 @@
 //!
 //! ## Building A Behaviour Tree
 //! ```rust
-//!
+//!   let world_behaviour: Selector<World> = behaviour_selector!("World Root", [
+//!       condition_decorator!("Ensure Can Shine",
+//!           |world: &mut World| {
+//!               world.can_shine()
+//!           },
+//!           action!("Cycle Day/Night", |world: &mut World| {
+//!               world.toggle_sun()
+//!           })
+//!       ),
+//!       condition_decorator!("Ensure Can Rain",
+//!           |world: &mut World| {
+//!               world.can_rain()
+//!           },
+//!           action!("Rain", |world: &mut World| {
+//!               world.rain()
+//!           })
+//!       )
+//!   ]);
 //! ```
 //! ## Evaluating A Behaviour Tree
 //! ```rust
+//!   world_behaviour.evaluate(&mut world);
 //! ```
 //!
 
@@ -13,7 +31,7 @@
        html_favicon_url = "http://rust-lang.org/favicon.ico",
        html_root_url = "https://archytaus.github.io/beehave/beehave")]
 
-#![feature(core, unboxed_closures)]
+#![feature(fn_traits, unboxed_closures)]
 
 pub use behaviour_result::BehaviourResult;
 pub use behaviour_node::BehaviourNode;

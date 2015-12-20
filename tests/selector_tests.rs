@@ -10,7 +10,7 @@ fn constructor_new() {
 
 #[test]
 fn constructor_with_capacity() {
-    let expected_capacity: usize = 10us;
+    let expected_capacity: usize = 10;
     let selector = Selector::<TestTarget>::with_capacity("Test Selector", expected_capacity);
     assert!(selector.name == "Test Selector");
     assert!(selector.children.capacity() == expected_capacity);

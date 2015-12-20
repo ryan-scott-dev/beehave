@@ -10,7 +10,7 @@ pub struct Sequence<'a, T> {
     pub children: Vec<Box<BehaviourNode<T> + 'a>>
 }
 
-impl <'a, T> Sequence<'a, T> {
+impl <'a, T: 'a> Sequence<'a, T> {
 
     pub fn new(name: &'static str) -> Sequence<'a, T> {
         Sequence {
@@ -43,7 +43,7 @@ impl <'a, T> Sequence<'a, T> {
 
 }
 
-impl <'a, T> BehaviourNode<T> for Sequence<'a, T> {
+impl <'a, T: 'a> BehaviourNode<T> for Sequence<'a, T> {
 
     fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
 

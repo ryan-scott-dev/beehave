@@ -10,7 +10,7 @@ pub struct Selector<'a, T> {
     pub children: Vec<Box<BehaviourNode<T> + 'a>>
 }
 
-impl <'a, T> Selector<'a, T> {
+impl <'a, T: 'a> Selector<'a, T> {
 
     pub fn new(name: &'static str) -> Selector<T> {
         Selector {
@@ -43,7 +43,7 @@ impl <'a, T> Selector<'a, T> {
 
 }
 
-impl <'a, T> BehaviourNode<T> for Selector<'a, T> {
+impl <'a, T: 'a> BehaviourNode<T> for Selector<'a, T> {
 
     fn evaluate(&mut self, target: &mut T) -> BehaviourResult {
 

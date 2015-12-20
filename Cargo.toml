@@ -1,7 +1,7 @@
 [package]
 name = "beehave"
 description = "A simple library for defining and evaluating a hierarchical state machine (behaviour tree)."
-version = "0.0.2"
+version = "0.0.3"
 authors = ["Ryan Scott <atthealma@gmail.com>"]
 
 readme = "README.md"
@@ -12,14 +12,9 @@ homepage = "https://github.com/Archytaus/beehave"
 repository = "https://github.com/Archytaus/beehave"
 documentation = "https://archytaus.github.io/beehave/beehave"
 
-[[bin]]
+[dev-dependencies]
 
-name = "example"
-path = "example/main.rs"
-bench = true
-test = false
-doctest = false
-doc = false
+rand = "*"
 
 [lib]
 
