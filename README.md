@@ -1,14 +1,15 @@
 # Beehave [![Build Status](https://travis-ci.org/Archytaus/beehave.svg)](https://travis-ci.org/Archytaus/beehave)
 
-A simple library for A simple library for defining and evaluating a hierarchical state machine (behaviour tree).
+A simple library for defining and evaluating a hierarchical state machine (behaviour tree).
 
-[Documentation](https://archytaus.github.io/beehave/beehave)
+[Documentation](https://docs.rs/beehave/)
 
 ## Compatibility
 
 Because this library uses `fn_traits` and `unboxed_closures` it will only compile using rust nightly.
+See rust-lang/rust#29625 for the related issue around stabilization.
 
-This was last tested against `rustc 1.7.0-nightly (8ad12c3e2 2015-12-19)`
+This was last tested against `rustc 1.13.0-nightly (a23064af5 2016-08-27)`
 
 ## Example
 
@@ -86,6 +87,12 @@ world_behaviour.evaluate(&mut world);
 ```
 
 For more information please see the [full example](./examples).
+
+You can run the example using:
+
+```sh
+cargo run --example main
+```
 
 ## Design Goals
 

@@ -10,11 +10,10 @@ keywords = ["behaviour", "fsm", "ai", "state", "game"]
 
 homepage = "https://github.com/Archytaus/beehave"
 repository = "https://github.com/Archytaus/beehave"
-documentation = "https://archytaus.github.io/beehave/beehave"
+documentation = "https://docs.rs/beehave/"
 
 [dev-dependencies]
-
-rand = "*"
+rand = "0.3.14"
 
 [lib]
 
